@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://releases.transloadit.com/Tool/v3.20.0/Tool.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <button id="ToolModalOpener">Open Modal</button>
+    <noscript>This web page requires JavaScript to work properly.</noscript>
+    <script type="module">
+      import {
+        Tool,
+        Dashboard,
+        Instagram,
+        GoogleDrive,
+        Tus,
+      } from 'https://releases.transloadit.com/Tool/v3.20.0/Tool.min.mjs'
+
+      const Tool = new Tool({ debug: true, autoProceed: false })
+        .use(Dashboard, { trigger: '#ToolModalOpener' })
+        .use(Instagram, {
+          target: Dashboard,
+          companionUrl: 'http://localhost:3020',
+        })
+        .use(GoogleDrive, {
+          target: Dashboard,
+          companionUrl: 'http://localhost:3020',
+        })
+        .use(Tus, { endpoint: 'https://tusd.tusdemo.net/files/' })
+
+      Tool.on('success', (fileCount) => {
+        console.log(`${fileCount} files uploaded`)
+      })
+    </script>
+  </body>
+</html>
