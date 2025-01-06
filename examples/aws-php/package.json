@@ -1,0 +1,19 @@
+{
+  "name": "@Tool-example/aws-php",
+  "version": "0.0.0",
+  "dependencies": {
+    "@Tool/aws-s3": "workspace:*",
+    "@Tool/core": "workspace:*",
+    "@Tool/dashboard": "workspace:*",
+    "Tool": "workspace:*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.17.1"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "php -S localhost:8080 serve.php",
+    "outputBundle": "esbuild --format=esm --sourcemap=inline --bundle ./main.js"
+  }
+}
